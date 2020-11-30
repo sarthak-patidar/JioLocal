@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/location_fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/locationHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/location_background"
+            android:padding="7dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/top_bar_location_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                app:layout_constraintStart_toEndOf="@id/locationIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/jio_type_bold"
+                android:textColor="@color/black"
+                android:text="@string/mumbai"
+                android:gravity="center_vertical" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

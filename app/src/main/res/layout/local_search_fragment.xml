@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/jiolocal_search_layout">
+
+        <!--Search Header for JioLocal-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_header"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/search_grey_background"
+            android:gravity="center_horizontal"
+            android:padding="7dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/jiolocal_back_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:contentDescription="@string/search_help"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_rounded_corner_search_new"
+                android:padding="5dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/jiolocal_back_arrow"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlSymmetry">
+
+                <ImageView
+                    android:id="@+id/jiolocal_search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:foregroundGravity="center_vertical"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:src="@drawable/ic_baseline_search_24"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/jiolocal_search_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:autofillHints="true"
+                    android:background="@color/white"
+                    android:foregroundGravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:hint="@string/jiolocal_search"
+                    android:inputType="text"
+                    android:paddingEnd="60dp"
+                    android:text=""
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/jiolocal_search_icon" />
+
+                <ImageView
+                    android:id="@+id/clear_search_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circle"
+                    android:foregroundGravity="center_vertical"
+                    android:src="@drawable/ic_baseline_clear_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="@string/clear_search_text"
+                    android:visibility="invisible" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--Container for all other fragments-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/search_header">
+
+            <!--Location Bar Container-->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/location_header_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/jiolocal_recent_search_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/location_header_container"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingTop="15dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="12sp"
+                    android:textColor="#666666"
+                    android:text="@string/recent_searches"
+                    android:fontFamily="@font/jio_type_medium" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="12sp"
+                    android:textColor="@color/blue"
+                    android:textAlignment="textEnd"
+                    android:text="@string/clear_all_search_text"
+                    android:fontFamily="@font/jio_type_medium" />
+            </LinearLayout>
+
+            <!--Recent Searches Recycler View-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recent_search_recycler_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/jiolocal_recent_search_header" />
+
+            <!--Search Results Recycler View-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_results_recycler_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location_header_container" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">JioLocal</string>
+
+    <string name="jiolocal_search">Search for shops and services near you</string>
+    <string name="mumbai">Thane West, Thane, 400605</string>
+    <string name="pinDemo">40078</string>
+    <string name="recent_searches">Recent Searches</string>
+    <string name="clear_all_search_text">Clear All</string>
+    <string name="search_help">Search</string>
+    <string name="clear_search_text">Clear Search</string>
+</resources>
