@@ -16,12 +16,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sarthak.jiolocal.R
-import com.sarthak.jiolocal.adapters.RecentSearchesAdapter
-import com.sarthak.jiolocal.adapters.SearchSuggestionsAdapter
-import com.sarthak.jiolocal.databinding.LocalSearchFragmentBinding
+import com.sarthak.jiolocal.adapters.JioLocalRecentSearchesAdapter
+import com.sarthak.jiolocal.adapters.JioLocalSearchSuggestionsAdapter
+import com.sarthak.jiolocal.databinding.JioLocalSearchFragmentBinding
 import com.sarthak.jiolocal.viewmodels.DummyViewModel
 
-class SearchFragment : Fragment() {
+class JioLocalSearchFragment : Fragment() {
 
     private var areSearchResultsShown = false
 
@@ -36,7 +36,7 @@ class SearchFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         activity!!.supportFragmentManager.beginTransaction()
-            .replace(R.id.location_header_container, LocationUpdateFragment()).commit()
+            .replace(R.id.location_searchFilter_header_container, JioLocalLocationUpdateFragment()).commit()
     }
 
     override fun onCreateView(
@@ -44,8 +44,8 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding : LocalSearchFragmentBinding = DataBindingUtil.inflate(
-            inflater, R.layout.local_search_fragment, container, false)
+        val binding : JioLocalSearchFragmentBinding = DataBindingUtil.inflate(
+            inflater, R.layout.jio_local_search_fragment, container, false)
         return binding.root
     }
 
@@ -55,7 +55,7 @@ class SearchFragment : Fragment() {
         dummyViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             DummyViewModel::class.java
         )
-        locationFragmentContainer = activity!!.findViewById(R.id.location_header_container)
+        locationFragmentContainer = activity!!.findViewById(R.id.location_searchFilter_header_container)
         recentSearchRecyclerView = activity!!.findViewById(R.id.recent_search_recycler_container)
         searchSuggestionsRecyclerContainer = activity!!.findViewById(R.id.search_suggestions_recycler_container)
         searchBox = activity!!.findViewById(R.id.jiolocal_search_box)
@@ -92,14 +92,14 @@ class SearchFragment : Fragment() {
         searchSuggestionsRecyclerContainer.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         recentSearchRecyclerView.layoutManager = LinearLayoutManager(context)
-        recentSearchRecyclerView.adapter = RecentSearchesAdapter(dummyViewModel.getRecentSearches())
+        recentSearchRecyclerView.adapter = JioLocalRecentSearchesAdapter(dummyViewModel.getRecentSearches())
         recentSearchRecyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         toggleRecentSearchVisibility(if (areSearchResultsShown) View.GONE else View.VISIBLE)
     }
 
     private fun performSearch(input: String) {
-        searchSuggestionsRecyclerContainer.adapter = SearchSuggestionsAdapter(dummyViewModel.getSearchResults(input))
+        searchSuggestionsRecyclerContainer.adapter = JioLocalSearchSuggestionsAdapter(dummyViewModel.getSearchSuggestions(input))
         toggleRecentSearchVisibility(View.GONE)
     }
 
@@ -112,5 +112,12 @@ class SearchFragment : Fragment() {
             else -> View.VISIBLE
         }
         areSearchResultsShown = visibility != View.VISIBLE
+    }
+
+    // todo: bind this function with onClick event on searchSuggestionItem
+    private fun onSearchSuggestionClick(item : View) {
+        activity!!.supportFragmentManager.beginTransaction()
+            .add(R.id.search_results_container, JioLocalSearchResultsFragment())
+            .commit()
     }
 }

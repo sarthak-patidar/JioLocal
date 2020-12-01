@@ -95,7 +95,7 @@
 
             <!--Location Bar Container-->
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/location_header_container"
+                android:id="@+id/location_searchFilter_header_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -103,9 +103,10 @@
             <LinearLayout
                 android:id="@+id/jiolocal_recent_search_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/location_header_container"
+                android:layout_height="37dp"
+                app:layout_constraintTop_toBottomOf="@id/location_searchFilter_header_container"
                 app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/white"
                 android:paddingTop="15dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp">
@@ -113,7 +114,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textColor="#666666"
                     android:text="@string/recent_searches"
                     android:fontFamily="@font/jio_type_medium" />
@@ -128,6 +129,70 @@
                     android:fontFamily="@font/jio_type_medium" />
             </LinearLayout>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/jiolocal_search_view_header"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                app:layout_constraintTop_toBottomOf="@id/location_searchFilter_header_container"
+                app:layout_constraintStart_toStartOf="parent"
+                android:elevation="20dp"
+                android:visibility="gone">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp">
+
+                    <TextView
+                        android:id="@+id/search_result_count_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/jio_type_medium"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="@string/search_count"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/search_layout_toggle_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="23dp"
+                        android:layout_marginBottom="-1dp"
+                        android:background="@drawable/bg_rounded_corner_search_new"
+                        android:backgroundTint="@color/search_grey_background"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/search_layout_toggle_icon"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/top_bar_location_icon"
+                            android:contentDescription="View Toggle" />
+
+                        <TextView
+                            android:id="@+id/search_layout_toggle_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/jio_type_medium"
+                            android:text="@string/search_view_toggle_text"
+                            android:textColor="@color/blue"
+                            android:gravity="center"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
             <!--Recent Searches Recycler View-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recent_search_recycler_container"
@@ -136,13 +201,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/jiolocal_recent_search_header" />
 
-            <!--Search Results Recycler View-->
+            <!--Search Suggestions Recycler View-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/search_suggestions_recycler_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/location_header_container" />
+                app:layout_constraintTop_toBottomOf="@id/location_searchFilter_header_container" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/search_results_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/search_grey_background"
+                app:layout_constraintTop_toBottomOf="@id/jiolocal_search_view_header"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

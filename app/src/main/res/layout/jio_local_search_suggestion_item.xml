@@ -5,7 +5,7 @@
     <data>
         <variable
             name="searchSuggestion"
-            type="com.sarthak.jiolocal.dao.SearchSuggestionDao" />
+            type="com.sarthak.jiolocal.dao.JioLocalSearchSuggestionDao" />
 
     </data>
 

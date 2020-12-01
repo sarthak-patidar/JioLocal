@@ -5,7 +5,7 @@
     <data>
         <variable
             name="recentSearch"
-            type="com.sarthak.jiolocal.dao.RecentSearchDao" />
+            type="com.sarthak.jiolocal.dao.JioLocalRecentSearchDao" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

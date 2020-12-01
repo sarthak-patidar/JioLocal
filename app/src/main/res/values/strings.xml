@@ -5,7 +5,9 @@
     <string name="mumbai">Thane West, Thane, 400605</string>
     <string name="pinDemo">40078</string>
     <string name="recent_searches">Recent Searches</string>
+    <string name="search_count">21 Results</string>
     <string name="clear_all_search_text">Clear All</string>
     <string name="search_help">Search</string>
     <string name="clear_search_text">Clear Search</string>
+    <string name="search_view_toggle_text">MapView</string>
 </resources>

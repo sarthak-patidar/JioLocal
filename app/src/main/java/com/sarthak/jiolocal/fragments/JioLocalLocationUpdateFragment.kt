@@ -10,7 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentContainerView
 import com.sarthak.jiolocal.R
 
-class LocationUpdateFragment : Fragment() {
+class JioLocalLocationUpdateFragment : Fragment() {
 
     private val TAG = "LocationUpdateFragment"
     private lateinit  var fragmentContainer : FragmentContainerView
@@ -20,8 +20,8 @@ class LocationUpdateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        fragmentContainer = activity!!.findViewById(R.id.location_header_container) as FragmentContainerView
-        return inflater.inflate(R.layout.fragment_location, container, false)
+        fragmentContainer = activity!!.findViewById(R.id.location_searchFilter_header_container) as FragmentContainerView
+        return inflater.inflate(R.layout.jio_local_fragment_location, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
