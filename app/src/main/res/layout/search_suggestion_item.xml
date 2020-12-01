@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="searchResult"
-            type="com.sarthak.jiolocal.dao.SearchResultDao" />
+            name="searchSuggestion"
+            type="com.sarthak.jiolocal.dao.SearchSuggestionDao" />
 
     </data>
 
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jio_type_medium"
-            android:text="@{searchResult.title}"
+            android:text="@{searchSuggestion.title}"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@{searchResult.category}"
+            android:text="@{searchSuggestion.category}"
             android:fontFamily="@font/jio_type_medium"
             android:textColor="@color/black"
             android:textSize="12sp"

@@ -1,7 +1,7 @@
 package com.sarthak.jiolocal
 
 import com.sarthak.jiolocal.dao.RecentSearchDao
-import com.sarthak.jiolocal.dao.SearchResultDao
+import com.sarthak.jiolocal.dao.SearchSuggestionDao
 
 class DummyRepository {
 
@@ -14,13 +14,13 @@ class DummyRepository {
         return recentSearches
     }
 
-    fun getSearchResults(input: String) : List<SearchResultDao> {
-        val searchResults =  ArrayList<SearchResultDao>()
-        searchResults.add(SearchResultDao("Spa Centres Near Me", "Category"))
-        searchResults.add(SearchResultDao("Spa Centres", "Category"))
-        searchResults.add(SearchResultDao("Spas-Men", "Category"))
-        searchResults.add(SearchResultDao("Spas-24 Hours", "Category"))
-        searchResults.add(SearchResultDao("Spas-Women", "Category"))
+    fun getSearchResults(input: String) : List<SearchSuggestionDao> {
+        val searchResults =  ArrayList<SearchSuggestionDao>()
+        searchResults.add(SearchSuggestionDao("Spa Centres Near Me", "Category"))
+        searchResults.add(SearchSuggestionDao("Spa Centres", "Category"))
+        searchResults.add(SearchSuggestionDao("Spas-Men", "Category"))
+        searchResults.add(SearchSuggestionDao("Spas-24 Hours", "Category"))
+        searchResults.add(SearchSuggestionDao("Spas-Women", "Category"))
         return searchResults
     }
 }

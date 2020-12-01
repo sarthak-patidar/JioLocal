@@ -138,7 +138,7 @@
 
             <!--Search Results Recycler View-->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_results_recycler_container"
+                android:id="@+id/search_suggestions_recycler_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
