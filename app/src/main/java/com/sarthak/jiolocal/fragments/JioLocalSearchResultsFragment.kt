@@ -94,9 +94,9 @@ class JioLocalSearchResultsFragment(
     }
 
     private fun init() {
-        layoutToggleSwitch = requireActivity().findViewById(R.id.search_layout_toggle_button)
-        layoutToggleImageView = requireActivity().findViewById(R.id.search_layout_toggle_icon)
-        layoutToggleTextView = requireActivity().findViewById(R.id.search_layout_toggle_text)
+        layoutToggleSwitch = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleButton
+        layoutToggleImageView = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleIcon
+        layoutToggleTextView = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleText
         searchResultsRecyclerView = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchResultsListLayout
         searchResultsMapView = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchResultsMapLayout
         initViews()
@@ -108,6 +108,7 @@ class JioLocalSearchResultsFragment(
         )
 
         searchResults = dummyViewModel.getSearchResults(searchSuggestion.title)
+        jioLocalSearchResultsFloatingPointRecyclerViewBinding.resultCount = "${searchResults.size} Results"
         searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
         searchResultsRecyclerView.adapter = JioLocalSearchResultsAdapter(searchResults, this)
 
@@ -129,12 +130,18 @@ class JioLocalSearchResultsFragment(
             addSearchResultsOnMap()
         }
 
+        layoutToggleTextView.text = "List view"
+        layoutToggleImageView.setImageResource(R.drawable.ic_baseline_format_list_bulleted_24)
+
         searchResultsRecyclerView.visibility = View.GONE
         searchResultsMapView.visibility = View.VISIBLE
         CURRENT_LAYOUT = MAP_LAYOUT
     }
 
     private fun switchToListLayout() {
+        layoutToggleTextView.text = "Map view"
+        layoutToggleImageView.setImageResource(R.drawable.top_bar_location_icon)
+
         searchResultsRecyclerView.visibility = View.VISIBLE
         searchResultsMapView.visibility = View.GONE
         CURRENT_LAYOUT = LIST_LAYOUT

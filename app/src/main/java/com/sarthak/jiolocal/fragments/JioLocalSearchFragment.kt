@@ -88,11 +88,14 @@ class JioLocalSearchFragment : Fragment(), OnSearchSuggestionClickListener {
 
         clearSearch.setOnClickListener {
             searchBox.text.clear()
+            toggleRecentSearchVisibility(View.VISIBLE)
+            jioLocalSearchFragmentBinding.searchResultsContainer.visibility = View.GONE
         }
     }
 
     override fun onSearchSuggestionClick(item: JioLocalSearchSuggestionDao) {
         // todo : put item variable in bundle and pass bundle to fragment instead of directly passing.
+        jioLocalSearchFragmentBinding.searchResultsContainer.visibility = View.VISIBLE
         requireActivity().supportFragmentManager.beginTransaction()
             .add(R.id.search_results_container, JioLocalSearchResultsFragment(item))
             .commit()
