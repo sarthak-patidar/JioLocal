@@ -6,13 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sarthak.jiolocal.R
 import com.sarthak.jiolocal.dao.JioLocalRecentSearchDao
-import com.sarthak.jiolocal.databinding.JioLocalRecentSearchItemBinding
+import com.sarthak.jiolocal.databinding.JiolocalRecentSearchItemBinding
 import com.sarthak.jiolocal.viewholders.JioLocalRecentSearchesViewHolder
 
 class JioLocalRecentSearchesAdapter(private val recentSearches : List<JioLocalRecentSearchDao>) : RecyclerView.Adapter<JioLocalRecentSearchesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JioLocalRecentSearchesViewHolder {
-        val binding : JioLocalRecentSearchItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.jio_local_recent_search_item, parent,false)
+        val binding : JiolocalRecentSearchItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.jiolocal_recent_search_item, parent,false)
         return JioLocalRecentSearchesViewHolder(binding)
     }
 

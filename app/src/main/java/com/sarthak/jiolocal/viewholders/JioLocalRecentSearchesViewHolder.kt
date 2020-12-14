@@ -1,15 +1,13 @@
 package com.sarthak.jiolocal.viewholders
 
 import androidx.recyclerview.widget.RecyclerView
-import com.sarthak.jiolocal.BR
 import com.sarthak.jiolocal.dao.JioLocalRecentSearchDao
-import com.sarthak.jiolocal.databinding.JioLocalRecentSearchItemBinding
+import com.sarthak.jiolocal.databinding.JiolocalRecentSearchItemBinding
 
-class JioLocalRecentSearchesViewHolder(private val binding: JioLocalRecentSearchItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class JioLocalRecentSearchesViewHolder(private val binding: JiolocalRecentSearchItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(data: JioLocalRecentSearchDao) {
-        binding.setVariable(BR.recentSearch, data)
-        binding.executePendingBindings()
+        binding.recentSearch = data
     }
 
 }

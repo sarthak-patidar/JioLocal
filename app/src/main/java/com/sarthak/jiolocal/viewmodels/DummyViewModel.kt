@@ -3,6 +3,7 @@ package com.sarthak.jiolocal.viewmodels
 import androidx.lifecycle.ViewModel
 import com.sarthak.jiolocal.DummyRepository
 import com.sarthak.jiolocal.dao.JioLocalRecentSearchDao
+import com.sarthak.jiolocal.dao.JioLocalSearchResultFloatingPointDao
 import com.sarthak.jiolocal.dao.JioLocalSearchSuggestionDao
 
 class DummyViewModel() : ViewModel() {
@@ -15,6 +16,10 @@ class DummyViewModel() : ViewModel() {
 
     fun getSearchSuggestions(input: String) : List<JioLocalSearchSuggestionDao> {
         return repository.getSearchSuggestions(input)
+    }
+
+    fun getSearchResults(input: String): List<JioLocalSearchResultFloatingPointDao> {
+        return repository.getSearchResults(input)
     }
 
 }

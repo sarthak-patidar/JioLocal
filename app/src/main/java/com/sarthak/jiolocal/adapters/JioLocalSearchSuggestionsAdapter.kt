@@ -6,15 +6,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sarthak.jiolocal.R
 import com.sarthak.jiolocal.dao.JioLocalSearchSuggestionDao
-import com.sarthak.jiolocal.databinding.JioLocalSearchSuggestionItemBinding
+import com.sarthak.jiolocal.databinding.JiolocalSearchSuggestionItemBinding
 import com.sarthak.jiolocal.viewholders.JioLocalSearchSuggestionViewHolder
 
-class JioLocalSearchSuggestionsAdapter(private val jioLocalSearchSuggestions : List<JioLocalSearchSuggestionDao>) : RecyclerView.Adapter<JioLocalSearchSuggestionViewHolder>() {
+class JioLocalSearchSuggestionsAdapter(
+        private val jioLocalSearchSuggestions: List<JioLocalSearchSuggestionDao>,
+        private val searchSuggestionClickListener: JioLocalSearchSuggestionViewHolder.OnSearchSuggestionClickListener)
+    : RecyclerView.Adapter<JioLocalSearchSuggestionViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JioLocalSearchSuggestionViewHolder {
-        val binding : JioLocalSearchSuggestionItemBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context), R.layout.jio_local_search_suggestion_item, parent, false
+        val binding: JiolocalSearchSuggestionItemBinding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context), R.layout.jiolocal_search_suggestion_item, parent, false
         )
-        return JioLocalSearchSuggestionViewHolder(binding)
+        return JioLocalSearchSuggestionViewHolder(binding, searchSuggestionClickListener)
     }
 
     override fun onBindViewHolder(holder: JioLocalSearchSuggestionViewHolder, position: Int) {

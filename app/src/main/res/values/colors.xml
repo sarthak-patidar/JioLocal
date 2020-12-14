@@ -9,7 +9,18 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="blue">#08B3F2</color>
+
+    <color name="grey_dark">#6C6C6C</color>
+    <color name="jiolocal_blue">#08B3F2</color>
     <color name="search_grey_background">#EBEBEB</color>
     <color name="search_placeholder">#999999</color>
     <color name="location_searchFilter_background">#F8F8F8</color>
+    <color name="jiolocal_ratings_background">#FF9E00</color>
+    <color name="jiolocal_grey">#959595</color>
+    <color name="store_open_green">#429D00</color>
+    <color name="jiolocal_search_item_filter_text_grey">#666666</color>
+    <color name="jiolocal_search_item_filter_border_color_grey">#D1D1D1</color>
+    <color name="jiolocal_search_item_filter_background">#08B3F21A</color>
+    <color name="jiolocal_blue_light">#e6f7fe</color>
+    <color name="jiolocal_search_filter_active">#214796</color>
 </resources>
