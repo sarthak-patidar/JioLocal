@@ -28,7 +28,7 @@ class JioLocalLocationUpdateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragmentContainer = requireActivity().findViewById(R.id.location_searchFilter_header_container) as FragmentContainerView
+        fragmentContainer = requireActivity().findViewById(R.id.location_header_container) as FragmentContainerView
         // todo: add onClick listener to locationHeader to open update location popup.
         //    val layout = view?.findViewById<ConstraintLayout>(R.id.locationHeader)
         //          layout.setOnClickListener {

@@ -30,7 +30,8 @@ import com.sarthak.jiolocal.viewmodels.DummyViewModel
 
 class JioLocalSearchResultsFragment(
     private val searchSuggestion: JioLocalSearchSuggestionDao
-) : Fragment(), OnMapReadyCallback, OnSearchResultFloatingPointItemClickListener, GoogleMap.OnMarkerClickListener {
+) : Fragment(), OnMapReadyCallback, OnSearchResultFloatingPointItemClickListener,
+    GoogleMap.OnMarkerClickListener {
 
     private val TAG = "JioLocalSearchResultsFragment"
     private val LIST_LAYOUT = 1
@@ -39,7 +40,7 @@ class JioLocalSearchResultsFragment(
 
     private lateinit var map: GoogleMap
     private lateinit var dummyViewModel: DummyViewModel
-    private lateinit var searchResults : List<JioLocalSearchResultFloatingPointDao>
+    private lateinit var searchResults: List<JioLocalSearchResultFloatingPointDao>
     private lateinit var jioLocalSearchResultsFloatingPointRecyclerViewBinding: JiolocalSearchResultsFloatingPointRecyclerViewBinding
     private lateinit var layoutToggleSwitch: LinearLayout
     private lateinit var layoutToggleImageView: ImageView
@@ -53,10 +54,21 @@ class JioLocalSearchResultsFragment(
         savedInstanceState: Bundle?
     ): View? {
         jioLocalSearchResultsFloatingPointRecyclerViewBinding = DataBindingUtil.inflate(
-            inflater, R.layout.jiolocal_search_results_floating_point_recycler_view, container, false
+            inflater,
+            R.layout.jiolocal_search_results_floating_point_recycler_view,
+            container,
+            false
         )
         init()
         return jioLocalSearchResultsFloatingPointRecyclerViewBinding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        searchResultsMapView.onCreate(savedInstanceState)
+        searchResultsMapView.onResume()
+        searchResultsMapView.getMapAsync(this)
     }
 
     override fun onMapReady(p0: GoogleMap?) {
@@ -77,7 +89,7 @@ class JioLocalSearchResultsFragment(
 
     override fun onFloatingPointCallButtonClick(searchResultFloatingPoint: JioLocalSearchResultFloatingPointDao) {
         val callIntent = Intent(Intent.ACTION_DIAL)
-        callIntent.data = Uri.parse("tel:"+searchResultFloatingPoint.floatingPointContactNumber)
+        callIntent.data = Uri.parse("tel:" + searchResultFloatingPoint.floatingPointContactNumber)
         startActivity(callIntent)
     }
 
@@ -88,17 +100,25 @@ class JioLocalSearchResultsFragment(
     override fun onMarkerClick(p0: Marker?): Boolean {
         val floatingPoint = p0?.tag as JioLocalSearchResultFloatingPointDao
         val floatingPointDialogFragment = JioLocalFloatingPointDialogFragment(floatingPoint)
-        floatingPointDialogFragment.show(requireActivity().supportFragmentManager, "floatingPointDialog")
+        floatingPointDialogFragment.show(
+            requireActivity().supportFragmentManager,
+            "floatingPointDialog"
+        )
         // TODO: 14-12-2020 : show floatingPointItemCard as popup over map.
         return true
     }
 
     private fun init() {
-        layoutToggleSwitch = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleButton
-        layoutToggleImageView = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleIcon
-        layoutToggleTextView = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleText
-        searchResultsRecyclerView = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchResultsListLayout
-        searchResultsMapView = jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchResultsMapLayout
+        layoutToggleSwitch =
+            jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleButton
+        layoutToggleImageView =
+            jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleIcon
+        layoutToggleTextView =
+            jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchLayoutToggleText
+        searchResultsRecyclerView =
+            jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchResultsListLayout
+        searchResultsMapView =
+            jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchResultsMapLayout
         initViews()
     }
 
@@ -108,7 +128,8 @@ class JioLocalSearchResultsFragment(
         )
 
         searchResults = dummyViewModel.getSearchResults(searchSuggestion.title)
-        jioLocalSearchResultsFloatingPointRecyclerViewBinding.resultCount = "${searchResults.size} Results"
+        jioLocalSearchResultsFloatingPointRecyclerViewBinding.resultCount =
+            "${searchResults.size} Results"
         searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
         searchResultsRecyclerView.adapter = JioLocalSearchResultsAdapter(searchResults, this)
 
@@ -151,11 +172,7 @@ class JioLocalSearchResultsFragment(
         map.clear()
         searchResults.forEach { floatingPoint ->
             val markerOptions = MarkerOptions()
-                .position(
-                    LatLng(
-                    floatingPoint.floatingPointLatitude, floatingPoint.floatingPointLongitude
-                )
-                )
+                .position(LatLng(floatingPoint.floatingPointLatitude,floatingPoint.floatingPointLongitude))
                 .title(floatingPoint.floatingPointTitle)
             val marker = map.addMarker(markerOptions)
             marker.tag = floatingPoint

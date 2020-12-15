@@ -18,6 +18,7 @@
     <color name="jiolocal_ratings_background">#FF9E00</color>
     <color name="jiolocal_grey">#959595</color>
     <color name="store_open_green">#429D00</color>
+    <color name="store_close_red">#E60A0A</color>
     <color name="jiolocal_search_item_filter_text_grey">#666666</color>
     <color name="jiolocal_search_item_filter_border_color_grey">#D1D1D1</color>
     <color name="jiolocal_search_item_filter_background">#08B3F21A</color>

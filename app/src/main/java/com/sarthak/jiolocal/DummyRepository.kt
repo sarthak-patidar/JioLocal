@@ -50,12 +50,27 @@ class DummyRepository {
             "18, Nandanvan Society, Gurudwara Marg, Sector 17, Nerul, Thane",
             19.083316,
             73.033834,
-            true,
+            false,
             4f,
             1,
             2,
             true,
             9977943744
+        ))
+
+        searchResults.add(JioLocalSearchResultFloatingPointDao("5f4sc461fbbaf20001dd4d86",
+            "Gunjan's Salon & Spa",
+            100,
+            "https://fpimages.withfloats.com/actual/5f6cef4dffad2b0794cdda70.jpg",
+            "18, Nandanvan Society, Gurudwara Marg, Sector 17, Nerul, Thane",
+            19.083316,
+            73.033834,
+            true,
+            4f,
+            1,
+            2,
+            false,
+            8435882403
         ))
 
         return searchResults

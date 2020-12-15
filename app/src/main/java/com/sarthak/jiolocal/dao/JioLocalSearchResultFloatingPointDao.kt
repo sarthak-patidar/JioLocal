@@ -29,6 +29,7 @@ class JioLocalSearchResultFloatingPointDao(
         true -> "OPEN NOW"
         else -> "CLOSED"
     }
+    val floatingPointTruncatedAddress = floatingPointAddress.take(28) + "..."
 
 //    @BindingAdapter("android:image")
 //    fun insertImage(view: View, url: String) {

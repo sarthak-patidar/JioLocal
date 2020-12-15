@@ -23,6 +23,12 @@ class JioLocalSearchResultsFloatingPointItemViewHolder(
             else -> View.GONE
         }
 
+        val statusTextColor = when(data.isFloatingPointOpen) {
+            true -> R.color.store_open_green
+            else -> R.color.store_close_red
+        }
+        itemBinding.serviceItemOpenCloseText.setTextColor(ContextCompat.getColor(context, statusTextColor))
+
         if (data.isOnlineBookingAvailable) {
             itemBinding.serviceItemBookAppointmentButton.visibility = View.VISIBLE
             itemBinding.serviceItemCallButton.background = ContextCompat.getDrawable(context, R.drawable.bordered_blue_bg)
@@ -46,7 +52,6 @@ class JioLocalSearchResultsFloatingPointItemViewHolder(
         }
 
         // call now button click listener.
-        // todo: add if call now option is available.
         itemBinding.serviceItemCallButton.setOnClickListener {
             searchResultFloatingPointItemClickListener.onFloatingPointCallButtonClick(data)
         }

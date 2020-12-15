@@ -96,7 +96,7 @@
 
             <!--Location Bar Container-->
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/location_searchFilter_header_container"
+                android:id="@+id/location_header_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -110,7 +110,7 @@
                 android:paddingTop="15dp"
                 android:paddingEnd="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/location_searchFilter_header_container">
+                app:layout_constraintTop_toBottomOf="@id/location_header_container">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,15 +144,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/location_searchFilter_header_container" />
+                app:layout_constraintTop_toBottomOf="@id/location_header_container" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/search_results_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/search_grey_background"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/location_header_container" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

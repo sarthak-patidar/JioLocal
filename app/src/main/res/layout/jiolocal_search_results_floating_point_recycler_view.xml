@@ -13,13 +13,21 @@
         android:layout_height="match_parent"
         android:background="@color/location_searchFilter_background">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_results_filter_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/search_grey_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/jiolocal_search_view_header"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:elevation="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/search_results_filter_recycler_view">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -78,7 +86,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_results_list_layout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/jiolocal_search_view_header"/>
