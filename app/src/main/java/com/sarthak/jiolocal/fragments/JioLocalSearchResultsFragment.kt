@@ -23,21 +23,33 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.sarthak.jiolocal.R
 import com.sarthak.jiolocal.adapters.JioLocalSearchResultsAdapter
 import com.sarthak.jiolocal.datamodels.JioLocalSearchResultFloatingPointDao
-import com.sarthak.jiolocal.datamodels.JioLocalSearchSuggestionDao
 import com.sarthak.jiolocal.databinding.JiolocalSearchResultsFloatingPointRecyclerViewBinding
+import com.sarthak.jiolocal.datamodels.JioLocalSearchSuggestionDao
 import com.sarthak.jiolocal.viewholders.JioLocalSearchResultsFloatingPointItemViewHolder.OnSearchResultFloatingPointItemClickListener
 import com.sarthak.jiolocal.viewmodels.DummyViewModel
 
-class JioLocalSearchResultsFragment(
-    private val searchSuggestion: JioLocalSearchSuggestionDao
-) : Fragment(), OnMapReadyCallback, OnSearchResultFloatingPointItemClickListener,
-    GoogleMap.OnMarkerClickListener {
+class JioLocalSearchResultsFragment : Fragment(), OnMapReadyCallback, 
+        OnSearchResultFloatingPointItemClickListener, GoogleMap.OnMarkerClickListener {
+
+    companion object {
+        private const val SEARCH_SUGGESTION_TITLE_ARG_KEY = "searchSuggestionTitle"
+
+        fun newInstance(searchSuggestion: JioLocalSearchSuggestionDao): JioLocalSearchResultsFragment{
+            val args = Bundle()
+            args.putString(SEARCH_SUGGESTION_TITLE_ARG_KEY, searchSuggestion.title)
+
+            val fragment = JioLocalSearchResultsFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     private val TAG = "JioLocalSearchResultsFragment"
     private val LIST_LAYOUT = 1
     private val MAP_LAYOUT = 2
     private var CURRENT_LAYOUT = LIST_LAYOUT
 
+    private lateinit var searchSuggestionTitle : String
     private lateinit var map: GoogleMap
     private lateinit var dummyViewModel: DummyViewModel
     private lateinit var searchResults: List<JioLocalSearchResultFloatingPointDao>
@@ -61,14 +73,6 @@ class JioLocalSearchResultsFragment(
         )
         init()
         return jioLocalSearchResultsFloatingPointRecyclerViewBinding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        searchResultsMapView.onCreate(savedInstanceState)
-        searchResultsMapView.onResume()
-        searchResultsMapView.getMapAsync(this)
     }
 
     override fun onMapReady(p0: GoogleMap?) {
@@ -99,7 +103,7 @@ class JioLocalSearchResultsFragment(
 
     override fun onMarkerClick(p0: Marker?): Boolean {
         val floatingPoint = p0?.tag as JioLocalSearchResultFloatingPointDao
-        val floatingPointDialogFragment = JioLocalFloatingPointDialogFragment(floatingPoint)
+        val floatingPointDialogFragment = JioLocalFloatingPointDialogFragment.newInstance(floatingPoint)
         floatingPointDialogFragment.show(
             requireActivity().supportFragmentManager,
             "floatingPointDialog"
@@ -119,6 +123,8 @@ class JioLocalSearchResultsFragment(
             jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchResultsListLayout
         searchResultsMapView =
             jioLocalSearchResultsFloatingPointRecyclerViewBinding.searchResultsMapLayout
+
+        searchSuggestionTitle = arguments?.getString(SEARCH_SUGGESTION_TITLE_ARG_KEY, "").toString()
         initViews()
     }
 
@@ -127,11 +133,15 @@ class JioLocalSearchResultsFragment(
             DummyViewModel::class.java
         )
 
-        searchResults = dummyViewModel.getSearchResults(searchSuggestion.title)
+        searchResults = dummyViewModel.getSearchResults(searchSuggestionTitle)
         jioLocalSearchResultsFloatingPointRecyclerViewBinding.resultCount =
             "${searchResults.size} Results"
         searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
         searchResultsRecyclerView.adapter = JioLocalSearchResultsAdapter(searchResults, this)
+
+        searchResultsMapView.onCreate(arguments)
+        searchResultsMapView.onResume()
+        searchResultsMapView.getMapAsync(this)
 
         initListeners()
     }
@@ -147,7 +157,7 @@ class JioLocalSearchResultsFragment(
 
     private fun switchToMapLayout() {
         if (!this::searchResults.isInitialized) {
-            searchResults = dummyViewModel.getSearchResults(searchSuggestion.title)
+            searchResults = dummyViewModel.getSearchResults(searchSuggestionTitle)
             addSearchResultsOnMap()
         }
 

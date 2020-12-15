@@ -100,8 +100,9 @@ class JioLocalSearchFragment : Fragment(), OnSearchSuggestionClickListener {
         // todo : put item variable in bundle and pass bundle to fragment instead of directly passing.
         jioLocalSearchFragmentBinding.searchResultsContainer.visibility = View.VISIBLE
         locationFragmentContainer.visibility = View.GONE
+        searchSuggestionsRecyclerContainer.visibility = View.GONE
         requireActivity().supportFragmentManager.beginTransaction()
-            .add(R.id.search_results_container, JioLocalSearchResultsFragment(item))
+            .add(R.id.search_results_container, JioLocalSearchResultsFragment.newInstance(item))
             .commit()
     }
 
