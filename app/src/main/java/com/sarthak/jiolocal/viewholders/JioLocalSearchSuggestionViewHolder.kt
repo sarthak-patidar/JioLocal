@@ -2,7 +2,7 @@ package com.sarthak.jiolocal.viewholders
 
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
-import com.sarthak.jiolocal.dao.JioLocalSearchSuggestionDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchSuggestionDao
 import com.sarthak.jiolocal.databinding.JiolocalSearchSuggestionItemBinding
 
 class JioLocalSearchSuggestionViewHolder(

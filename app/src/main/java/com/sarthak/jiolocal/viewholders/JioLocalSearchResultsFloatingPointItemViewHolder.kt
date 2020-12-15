@@ -5,7 +5,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sarthak.jiolocal.R
 import com.sarthak.jiolocal.databinding.JiolocalSearchResultsFloatingPointItemBinding
-import com.sarthak.jiolocal.dao.JioLocalSearchResultFloatingPointDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchResultFloatingPointDao
 
 class JioLocalSearchResultsFloatingPointItemViewHolder(
         private val itemBinding: JiolocalSearchResultsFloatingPointItemBinding,

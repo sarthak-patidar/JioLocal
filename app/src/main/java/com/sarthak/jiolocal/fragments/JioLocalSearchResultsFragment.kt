@@ -22,8 +22,8 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.sarthak.jiolocal.R
 import com.sarthak.jiolocal.adapters.JioLocalSearchResultsAdapter
-import com.sarthak.jiolocal.dao.JioLocalSearchResultFloatingPointDao
-import com.sarthak.jiolocal.dao.JioLocalSearchSuggestionDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchResultFloatingPointDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchSuggestionDao
 import com.sarthak.jiolocal.databinding.JiolocalSearchResultsFloatingPointRecyclerViewBinding
 import com.sarthak.jiolocal.viewholders.JioLocalSearchResultsFloatingPointItemViewHolder.OnSearchResultFloatingPointItemClickListener
 import com.sarthak.jiolocal.viewmodels.DummyViewModel

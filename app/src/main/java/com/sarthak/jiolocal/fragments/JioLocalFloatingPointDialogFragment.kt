@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.sarthak.jiolocal.R
-import com.sarthak.jiolocal.dao.JioLocalSearchResultFloatingPointDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchResultFloatingPointDao
 
 class JioLocalFloatingPointDialogFragment(
     private val floatingPoint: JioLocalSearchResultFloatingPointDao

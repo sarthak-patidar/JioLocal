@@ -1,8 +1,5 @@
-package com.sarthak.jiolocal.dao
+package com.sarthak.jiolocal.datamodels
 
-import android.view.View
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 //import com.bumptech.glide.Glide
 
 class JioLocalSearchResultFloatingPointDao(

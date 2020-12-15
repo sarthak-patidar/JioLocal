@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sarthak.jiolocal.R
 import com.sarthak.jiolocal.adapters.JioLocalRecentSearchesAdapter
 import com.sarthak.jiolocal.adapters.JioLocalSearchSuggestionsAdapter
-import com.sarthak.jiolocal.dao.JioLocalSearchSuggestionDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchSuggestionDao
 import com.sarthak.jiolocal.databinding.JiolocalSearchFragmentBinding
 import com.sarthak.jiolocal.viewholders.JioLocalSearchSuggestionViewHolder.OnSearchSuggestionClickListener
 import com.sarthak.jiolocal.viewmodels.DummyViewModel

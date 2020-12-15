@@ -1,10 +1,10 @@
 package com.sarthak.jiolocal.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.sarthak.jiolocal.DummyRepository
-import com.sarthak.jiolocal.dao.JioLocalRecentSearchDao
-import com.sarthak.jiolocal.dao.JioLocalSearchResultFloatingPointDao
-import com.sarthak.jiolocal.dao.JioLocalSearchSuggestionDao
+import com.sarthak.jiolocal.repositories.DummyRepository
+import com.sarthak.jiolocal.datamodels.JioLocalRecentSearchDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchResultFloatingPointDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchSuggestionDao
 
 class DummyViewModel() : ViewModel() {
 

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sarthak.jiolocal.R
-import com.sarthak.jiolocal.dao.JioLocalRecentSearchDao
+import com.sarthak.jiolocal.datamodels.JioLocalRecentSearchDao
 import com.sarthak.jiolocal.databinding.JiolocalRecentSearchItemBinding
 import com.sarthak.jiolocal.viewholders.JioLocalRecentSearchesViewHolder
 

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="floatingPoint"
-            type="com.sarthak.jiolocal.dao.JioLocalSearchResultFloatingPointDao" />
+            type="com.sarthak.jiolocal.datamodels.JioLocalSearchResultFloatingPointDao" />
     </data>
 
     <androidx.cardview.widget.CardView

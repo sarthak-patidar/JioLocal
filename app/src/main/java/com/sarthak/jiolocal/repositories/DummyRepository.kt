@@ -1,8 +1,8 @@
-package com.sarthak.jiolocal
+package com.sarthak.jiolocal.repositories
 
-import com.sarthak.jiolocal.dao.JioLocalRecentSearchDao
-import com.sarthak.jiolocal.dao.JioLocalSearchResultFloatingPointDao
-import com.sarthak.jiolocal.dao.JioLocalSearchSuggestionDao
+import com.sarthak.jiolocal.datamodels.JioLocalRecentSearchDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchResultFloatingPointDao
+import com.sarthak.jiolocal.datamodels.JioLocalSearchSuggestionDao
 
 class DummyRepository {
 
